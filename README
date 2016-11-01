@@ -1,4 +1,4 @@
-YouLoop.py for YouTube video download and trimming to specified length
+YouTrim.py for YouTube video download and trimming to specified length
 
 Install (MacOS):
 	Install the following packages
@@ -18,5 +18,5 @@ Install (MacOS):
 			Reference https://pypi.python.org/pypi/arrow
 
 Usage:
-	python3 YouLoop.py <YouTube video url> <start time> <end time>
+	python3 YouTrim.py <YouTube video url> <start time> <end time>
 	*Note: start and end time format can be specified in hh:mm:ss format
