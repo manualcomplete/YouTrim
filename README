@@ -1,0 +1,22 @@
+YouLoop.py for YouTube video download and trimming to specified length
+
+Install (MacOS):
+	Install the following packages
+		python3:
+			$ brew install python3
+
+		youtube-dl:
+			$ brew install youtube-dl
+			Reference https://rg3.github.io/youtube-dl/download.html
+
+		ffmpeg:
+			$ brew install ffmpeg
+			Reference https://trac.ffmpeg.org/wiki/CompilationGuide/MacOSX
+
+		arrow:
+			$ pip3 install --user arrow
+			Reference https://pypi.python.org/pypi/arrow
+
+Usage:
+	python3 YouLoop.py <YouTube video url> <start time> <end time>
+	*Note: start and end time format can be specified in hh:mm:ss format
