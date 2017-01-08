@@ -26,10 +26,14 @@ def get_time(time):
 	return time
 	
 
-def cut_video(startTime, endTime, filename):
-	outfile = 'out_' + filename
-	os.system('ffmpeg -i %s -ss %s -t %s -async 1 %s' % (filename, startTime, endTime, outfile))
-
+def cut_video(startTime, endTime, filename, audio_only=False):
+	# only support mp3 audio output
+	if (audio_only):
+		outfile = 'out_' + os.path.splitext(filename)[0] + '.mp3'
+	else:
+		outfile = 'out_' + filename
+	
+	os.system('ffmpeg -i %s -ss %s -to %s -async 1 %s' % (filename, startTime, endTime, outfile))
 
 def download_video(url):
 	cmd = ['youtube-dl', url, '--get-filename', '--restrict-filenames']
@@ -57,12 +61,14 @@ if __name__ == '__main__':
 	parser.add_argument('url', help='The video url for downloading')
 	parser.add_argument('st', help='The start time')
 	parser.add_argument('et', help='The end time')
+	parser.add_argument('--audio', action='store_true', default=False, help='Audio only in mp3 format')
 	args = parser.parse_args()
 
 	startTime = args.st
 	startTime = get_time(startTime)
 	endTime = args.et
 	endTime = get_time(endTime)
+	audioOnly = args.audio
 
 	print ('Start = %s, end = %s' % (startTime, endTime))
 
@@ -76,6 +82,6 @@ if __name__ == '__main__':
 	print ('Start = %s, end = %s' % (startTime, endTime))
 
 	filename = download_video(args.url)
-	cut_video(startTime, endTime, filename)
+	cut_video(startTime, endTime, filename, audioOnly)
 
 
